@@ -34,6 +34,7 @@ public class Activity {
   public double getTermination() { return terminationTime; }
   public double getDueTime() { return dueTime; }
   public double getDuration() { return duration; }
+  
 
   public void setID(int id) {
     this.id = id;
@@ -53,6 +54,10 @@ public class Activity {
       activationTime = terminationTime - duration;
     }
   }
+
+    
+  
+  
   
   public void setReleaseTime(double time) {
     // YOUR CODE here
@@ -80,9 +85,9 @@ public class Activity {
   //    possible to the due date. The parameter gain represents the strength
   //    of an activity's preferences.
   public void serialize(Activity previous) { 
-    if (previous.terminationTime > this.activationTime) //¶éÒàÇÅÒÊÔé¹ÊØ´¢Í§áÍ¤áÃ¡ÁÒ¡¡ÇèÒàÇÅÒàÃÔèÁµé¹¢Í§áÍ¤ÊÍ§(ÁÑ¹·Ó§Ò¹«éÍ¹¡Ñ¹) -- ¨ÐµéÍ§à«ç·àÇÅÒãËÁè
-      this.activationTime = previous.terminationTime;   //à«ç·àÇÅÒàÃÔèÁµé¹¢Í§áÍ¤ÊÍ§ãËÁè
-    this.terminationTime = this.activationTime + this.duration;     //µéÍ§à«ç·àÇÅÒÊé¹ÊØ´¢Í§áÍ¤ÊÍ§ãËÁè´éÇÂ
+    if (previous.terminationTime > this.activationTime) //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø´ï¿½Í§ï¿½Í¤ï¿½Ã¡ï¿½Ò¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½é¹¢Í§ï¿½Í¤ï¿½Í§(ï¿½Ñ¹ï¿½Ó§Ò¹ï¿½ï¿½Í¹ï¿½Ñ¹) -- ï¿½Ðµï¿½Í§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+      this.activationTime = previous.terminationTime;   //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½é¹¢Í§ï¿½Í¤ï¿½Í§ï¿½ï¿½ï¿½ï¿½
+    this.terminationTime = this.activationTime + this.duration;     //ï¿½ï¿½Í§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø´ï¿½Í§ï¿½Í¤ï¿½Í§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   }
 
   public void update(double gain) {
@@ -99,7 +104,7 @@ public class Activity {
   //    performance parameters are set to 1.0. ----------- we, wt
   public double getPerformance() {
     // YOUR CODE here
-      double performance=0.0;
+      double performance;
       double we = 1.0;
       double wt = 1.0;
       double pe = 0.0;

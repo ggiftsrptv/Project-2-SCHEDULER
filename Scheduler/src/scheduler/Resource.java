@@ -26,7 +26,7 @@ public class Resource {
 
   private String name;
   private ArrayList activities = new ArrayList();
-  private double gain = 0.0;
+  private double gain = 0.1;
 
   public Resource(String name) {
     this.name = name;
@@ -103,5 +103,8 @@ public class Resource {
     for(int i=0; i < activities.size(); i++)
       result = result.concat("\n   "+((Activity) activities.get(i)).toString());
     return result;
+  }
+  public static void main(String args[]){
+      
   }
 }
