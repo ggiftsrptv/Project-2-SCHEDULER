@@ -17,13 +17,9 @@ public class Scheduler {
     problem.init();
   }
 
-  public int bestStep() {
-    return bestStep;
-  }
+  public int bestStep() { return bestStep;  }
   
-  public double bestValue() {
-    return bestValue;
-  }
+  public double bestValue() { return bestValue; }
   
   public void schedule(double gain) {
     Iterator iterator = problem.getResources();

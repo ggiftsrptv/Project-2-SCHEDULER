@@ -44,10 +44,10 @@ public class Activity {
   // necessary, they change the values of activation time and termination
   // time consistently
   public void setDueTime(double time) {
-    if (time < 0.0) //time can be negative
-      return;
-    if (time > this.dueTime || (time - this.duration) > this.releaseTime) 
-      this.dueTime = time;
+    if (time < 0.0) return; //time can be negative
+      
+    if (time > this.dueTime || (time - this.duration) > this.releaseTime) this.dueTime = time;
+      
 
     if (dueTime < terminationTime) { // if end time more than due time - set new end time to be due time
       terminationTime = dueTime;
@@ -61,10 +61,10 @@ public class Activity {
   
   public void setReleaseTime(double time) {
     // YOUR CODE here
-    if (time < 0.0) //time can be negative
-      return;
-    if (time < this.releaseTime || (time + this.duration) < this.dueTime) 
-      this.releaseTime = time;
+    if (time < 0.0) return; //time can be negative
+      
+    if (time < this.releaseTime || (time + this.duration) < this.dueTime) this.releaseTime = time; 
+      
 
     if (releaseTime > activationTime) { // if ready time more than start time *- we have to change start time
       activationTime = releaseTime;
@@ -85,16 +85,16 @@ public class Activity {
   //    possible to the due date. The parameter gain represents the strength
   //    of an activity's preferences.
   public void serialize(Activity previous) { 
-    if (previous.terminationTime > this.activationTime) //�����������ش�ͧ�ͤ�á�ҡ��������������鹢ͧ�ͤ�ͧ(�ѹ�ӧҹ��͹�ѹ) -- �е�ͧ����������
-      this.activationTime = previous.terminationTime;   //������������鹢ͧ�ͤ�ͧ����
+    if (previous.terminationTime > this.activationTime) this.activationTime = previous.terminationTime;
+         
     this.terminationTime = this.activationTime + this.duration;     //��ͧ���������ش�ͧ�ͤ�ͧ�������
   }
 
   public void update(double gain) {
     activationTime += gain * (dueTime - terminationTime);
 
-    if (activationTime < releaseTime)
-      activationTime += gain * (releaseTime - activationTime);
+    if (activationTime < releaseTime) activationTime += gain * (releaseTime - activationTime);
+      
 
     terminationTime = activationTime + duration;
   }
@@ -104,29 +104,33 @@ public class Activity {
   //    performance parameters are set to 1.0. ----------- we, wt
   public double getPerformance() {
     // YOUR CODE here
-      double performance;
-      double we = 1.0;
-      double wt = 1.0;
-      double pe = 0.0;
-      double pt = 0.0;
+      //double performance;
+      double we,wt,pe,pt;
+      we = 1.0; wt = 1.0; pe = 0.0; pt = 0.0;
       
       //calculate 'pe'
-      if(releaseTime<= activationTime){
-          pe = 0;
-      }else if(releaseTime>activationTime){
-          pe = we * (releaseTime - activationTime);
-      }
+//      if(releaseTime<= activationTime){
+//          pe = 0;
+//      }else if(releaseTime>activationTime){
+//          pe = we * (releaseTime - activationTime);
+//      }
+//      //calculate 'pt'
+//      if(terminationTime<=dueTime){
+//          pt = 0;
+//      }else if(terminationTime>dueTime){
+//          pt = wt * (terminationTime - dueTime);
+//      }
+      // change to reduce number of line
+      if(releaseTime<= activationTime) pe = 0;
+      else if(releaseTime>activationTime) pe = we * (releaseTime - activationTime);
       //calculate 'pt'
-      if(terminationTime<=dueTime){
-          pt = 0;
-      }else if(terminationTime>dueTime){
-          pt = wt * (terminationTime - dueTime);
-      }
-      
+      if(terminationTime<=dueTime) pt = 0;
+      else if(terminationTime>dueTime) pt = wt * (terminationTime - dueTime);
+      return pe+pt;
       //calculate performance
-      performance = pe + pt;
+      //performance = pe + pt;
       //if(name.equals("Zone11")) System.out.println(activationTime);
-      return performance;
+      //return performance;
   }
 
   // The store() method is used to store an activity's temporal parameters that

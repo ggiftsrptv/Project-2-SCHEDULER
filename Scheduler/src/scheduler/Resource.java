@@ -10,14 +10,20 @@ public class Resource {
           Activity a1 = (Activity)o1;
           Activity a2 = (Activity)o2;
           int num =0;
-          if(a1.getActivation() < a2.getActivation()){ //need to call getActivation because activationTime is private attribute
-              num = -1;
-          } else if(a1.getActivation()== a2.getActivation()){
-              num = 0;
-          } else{
-              num = 1;
-          }
+          //make code shorter
+          if(a1.getActivation() < a2.getActivation()) num = -1; //need to call getActivation because activationTime is private attribute
+          else if(a1.getActivation()== a2.getActivation()) num = 0;
+          else num = 1;
+             
           return num;
+//          if(a1.getActivation() < a2.getActivation()){ //need to call getActivation because activationTime is private attribute
+//              num = -1;
+//          } else if(a1.getActivation()== a2.getActivation()){
+//              num = 0;
+//          } else{
+//              num = 1;
+//          }
+//          return num;
           
         }
     // YOUR CODE here
@@ -28,9 +34,7 @@ public class Resource {
   private ArrayList activities = new ArrayList();
   private double gain = 0.1;
 
-  public Resource(String name) {
-    this.name = name;
-  }
+  public Resource(String name) { this.name = name; }
 
   public String getName() { return name; }
 
