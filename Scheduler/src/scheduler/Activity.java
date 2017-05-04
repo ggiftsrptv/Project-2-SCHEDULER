@@ -64,7 +64,7 @@ public class Activity {
     if (time < 0.0) //time can be negative
       return;
     if (time < this.releaseTime || (time + this.duration) < this.dueTime) 
-      this.dueTime = time;
+      this.releaseTime = time;
 
     if (releaseTime > activationTime) { // if ready time more than start time *- we have to change start time
       activationTime = releaseTime;
@@ -125,6 +125,7 @@ public class Activity {
       
       //calculate performance
       performance = pe + pt;
+      //if(name.equals("Zone11")) System.out.println(activationTime);
       return performance;
   }
 

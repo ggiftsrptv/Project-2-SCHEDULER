@@ -53,6 +53,7 @@ public class Scheduler {
         while(iterator.hasNext())
           ((Resource) iterator.next()).store();
         bestStep = step;
+         // System.out.println(bestStep + " : "+ bestValue);
       }
     }
 

@@ -17,8 +17,8 @@ public abstract class Problem {
   }
 
   public void clear() {
-    tasks.removeAll(tasks);
-    resources.removeAll(resources);
+    tasks.clear();
+    resources.clear();
   }
 
   public Resource getResource(int id) {
